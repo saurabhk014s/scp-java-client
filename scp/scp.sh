@@ -67,7 +67,7 @@ then
 	SCP_CONFIG_FILE="-Dscp_config_file=${CONFDIR}/scp_config_file.properties"
 fi
 
-"$JAVACMD" $JAVA_OPTS $SCP_CONFIG_FILE -Dscp.log.dir="${LOGDIR}" -classpath $CPATH uk.co.marcoratto.scp.Runme "$@"
+"$JAVACMD" $JAVA_OPTS $SCP_CONFIG_FILE -Dscp.log.dir="${LOGDIR}" -Dlog4j.debug -classpath $CPATH uk.co.marcoratto.scp.Runme "$@"
 RET_CODE=$?
 if [ $RET_CODE -ne 0 ]
 then
