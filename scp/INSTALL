@@ -1,0 +1,19 @@
+[root] cd /usr/local/
+[root] tar xvzf /home/rattom/scp_v1.0.bin.tar.gz 
+[root] ln -s scp-1.0 scp
+[root] cd scp
+[root] chmod a+rx scp.sh 
+
+[rattom] ssh-keygen -b 2048
+[rattom] cat .ssh/id_rsa.pub 
+
+a004360@svuni056:/home/a004360
+$vi .ssh/authorized_keys 
+from="*.*.*.*" 
+
+[rattom] ssh a004360@svuni056.iveco.com
+[rattom] vi /home/rattom/.scp/conf/scp_config_file.properties
+[rattom] scpListener=uk.co.marcoratto.scp.listeners.ListenerPrintStream
+
+Download:
+[rattom] /usr/local/scp/scp.sh -file 'a004360@svuni056.iveco.com:/home/to8bm/was_log_archive/qal/*.txt' -todir ./../data/qal -keyfile /home/rattom/.ssh/id_rsa -trust -passphrase -sftp
