@@ -3,39 +3,39 @@
 
 = Install =
 
-Become root:
+*Become root:*
 {{{
 [user] sudo su - 
 [sudo] password for user: 
 }}}
 
-Change to the directory where you want to install the utility:
+*Change to the directory where you want to install the utility:*
 {{{
 [root] cd /usr/local/
 }}}
 
-Download the package:
+*Download the package:*
 {{{
 [root] wget -q http://scp-java-client.googlecode.com/svn/trunk/scp/build/scp_v1.2/scp_v1.2.bin.tar.gz
 }}}
 
-Verify the package:
+*Verify the .tar.gz package:*
 {{{
 [root] tar tvzf scp_v1.2.bin.tar.gz
 }}}
 
-Download the hash SHA1 of the package:
+*Download the hash SHA1 of the package:*
 {{{
 [root] wget -q http://scp-java-client.googlecode.com/svn/trunk/scp/build/scp_v1.2/scp_v1.2.bin.tar.gz.sha
 }}}
 
-Verify the checksum:
+*Verify the checksum:*
 {{{
 $sha1sum -c scp_v1.2.bin.tar.gz.sha 
 scp_v1.2.bin.tar.gz: OK
 }}}
 
-Import the GPG Public Key:
+*Import the GPG Public Key:*
 {{{
 [root] wget -O- -q http://scp-java-client.googlecode.com/svn/trunk/scp/KEYS | gpg --import
 gpg: /root/.gnupg/trustdb.gpg: trustdb created
@@ -45,12 +45,12 @@ gpg:               imported: 1
 
 }}}
 
-Download the GPG signature:
+*Download the GPG signature:*
 {{{
 [root] wget -q http://scp-java-client.googlecode.com/svn/trunk/scp/build/scp_v1.2/scp_v1.2.bin.tar.gz.asc
 }}}
 
-Check the GPG signature:
+*Check the GPG signature:*
 {{{
 [root] gpg --verify scp_v1.2.bin.tar.gz.asc 
 gpg: Signature made Sun 25 Aug 2013 10:47:00 AM CEST using DSA key ID 5C79EE7A
@@ -60,23 +60,23 @@ gpg:          There is no indication that the signature belongs to the owner.
 Primary key fingerprint: 66CC 4C24 D606 7E65 6E44  B7FE FA32 157C 5C79 EE7A
 }}}
 
-Now, if the check is OK, you can install it:
+*Now, if all the checks are OK, you can install it:*
 {{{
 [root] tar xvzf scp_v1.2.bin.tar.gz
 }}}
 
-For managing the release update, it is better to create a sym-link:
+*For managing the release update, it is better to create a sym-link:*
 {{{
 [root] ln -s scp-1.2 scp
 }}}
 
-Change the GRANT to the unix-shell-script for enabling to execute to everyone:
+*Change the GRANT to the unix-shell-script for enabling to execute to everyone:*
 {{{
 [root]
 chmod 755 scp/scp.sh
 }}}
 
-Test it with a non-root user:
+*Test it with a non-root user:*
 {{{
 [user] /usr/local/scp/scp.sh
 log4j: Trying to find [log4j.xml] using context classloader sun.misc.Launcher$AppClassLoader@45a877.
@@ -137,3 +137,5 @@ log4j: Finished configuring.
 
 ERROR! java return error code 3.
 }}}
+
+* That's all folks! *
