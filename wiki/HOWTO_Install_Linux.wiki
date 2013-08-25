@@ -1,4 +1,56 @@
-#summary Simple HOWTO for installa scp-java-client on a Linux System
+#summary Simple HOWTO for installing this utility on a Linux System.
 #labels Featured,Install,HOWTO
 
 = Install =
+
+Become root:
+{{{
+[user] sudo su - 
+[sudo] password for user: 
+}}}
+
+Change to the directory where you want to install the utility:
+{{{
+[root] cd /usr/local/
+}}}
+
+Download the package from internet:
+{{{
+[root] wget -q http://scp-java-client.googlecode.com/svn/trunk/scp/build/scp_v1.2/scp_v1.2.bin.tar.gz
+}}}
+
+Download the hash SHA1 of the package from internet:
+{{{
+[root] wget -q http://scp-java-client.googlecode.com/svn/trunk/scp/build/scp_v1.2/scp_v1.2.bin.tar.gz.sha
+}}}
+
+Verify the checksum:
+{{{
+$sha1sum -c scp_v1.2.bin.tar.gz.sha 
+scp_v1.2.bin.tar.gz: OK
+}}}
+
+Import the Public key for checking the sign of the package:
+{{{
+[root] wget -O- -q http://scp-java-client.googlecode.com/svn/trunk/scp/KEYS | gpg --import
+gpg: /root/.gnupg/trustdb.gpg: trustdb created
+gpg: key 5C79EE7A: public key "Marco Ratto (key for Google Code Projects) <marcoratto@gmail.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+
+}}}
+
+Download the GPG signature
+{{{
+[root] wget -q http://scp-java-client.googlecode.com/svn/trunk/scp/build/scp_v1.2/scp_v1.2.bin.tar.gz.asc
+}}}
+
+Check the GPG signature:
+{{{
+[root]gpg --verify scp_v1.2.bin.tar.gz.asc 
+gpg: Signature made Sun 25 Aug 2013 10:47:00 AM CEST using DSA key ID 5C79EE7A
+gpg: Good signature from "Marco Ratto (key for Google Code Projects) <marcoratto@gmail.com>"
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 66CC 4C24 D606 7E65 6E44  B7FE FA32 157C 5C79 EE7A
+}}}
