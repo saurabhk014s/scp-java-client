@@ -86,9 +86,15 @@ Primary key fingerprint: 66CC 4C24 D606 7E65 6E44  B7FE FA32 157C 5C79 EE7A
 chmod 755 scp/scp.sh
 }}}
 
+*Create the local configuration for the user:*
+{{{
+[user] mkdir $HOME/.scp
+[user] mkdir $HOME/.scp/conf
+}}}
+
 *Copy the default appender from the installation:*
 {{{
-[user] cp /usr/local/scp/res/scp_config_file.properties /home/rattom/.scp/conf
+[user] cp /usr/local/scp/res/scp_config_file.properties $HOME/.scp/conf
 }}}
 
 *Test it with a non-root user:*
@@ -107,10 +113,10 @@ log4j: Parsing appender named "file".
 log4j: Parsing layout options for "file".
 log4j: Setting property [conversionPattern] to [%d{ABSOLUTE} %5p %c{1}:%L - %m%n].
 log4j: End of parsing for "file".
-log4j: Setting property [file] to [/home/rattom/.scp/scp.log].
+log4j: Setting property [file] to [/home/user/.scp/scp.log].
 log4j: Setting property [maxBackupIndex] to [7].
 log4j: Setting property [maxFileSize] to [1024MB].
-log4j: setFile called: /home/rattom/.scp/scp.log, true
+log4j: setFile called: /home/user/.scp/scp.log, true
 log4j: setFile ended
 log4j: Parsed "file" options.
 log4j: Parsing for [uk.co.marcoratto.scp] with value=[trace, file].
@@ -155,7 +161,7 @@ ERROR! java return error code 3.
 
 *Test it:*
 {{{
-[user] /usr/local/scp/scp.sh -source /home/rattom/tmp/001.pdf -target rattom:rm@127.0.0.1:/tmp -trust
+[user] /usr/local/scp/scp.sh -source $HOME/tmp/001.pdf -target user:password@127.0.0.1:/tmp -trust
 log4j: Trying to find [log4j.xml] using context classloader sun.misc.Launcher$AppClassLoader@45a877.
 log4j: Trying to find [log4j.xml] using sun.misc.Launcher$AppClassLoader@45a877 class loader.
 log4j: Trying to find [log4j.xml] using ClassLoader.getSystemResource().
@@ -169,10 +175,10 @@ log4j: Parsing appender named "file".
 log4j: Parsing layout options for "file".
 log4j: Setting property [conversionPattern] to [%d{ABSOLUTE} %5p %c{1}:%L - %m%n].
 log4j: End of parsing for "file".
-log4j: Setting property [file] to [/home/rattom/.scp/scp.log].
+log4j: Setting property [file] to [/home/user/.scp/scp.log].
 log4j: Setting property [maxBackupIndex] to [7].
 log4j: Setting property [maxFileSize] to [1024MB].
-log4j: setFile called: /home/rattom/.scp/scp.log, true
+log4j: setFile called: /home/user/.scp/scp.log, true
 log4j: setFile ended
 log4j: Parsed "file" options.
 log4j: Parsing for [uk.co.marcoratto.scp] with value=[trace, file].
@@ -182,8 +188,8 @@ log4j: Parsing appender named "file".
 log4j: Appender "file" was already parsed.
 log4j: Handling log4j.additivity.uk.co.marcoratto.scp=[null]
 log4j: Finished configuring.
-Start upload file 1/1 from /home/rattom/tmp/001.pdf to rattom:rm@127.0.0.1:/tmp
-End upload file 1/1 from /home/rattom/tmp/001.pdf to rattom:rm@127.0.0.1:/tmp
+Start upload file 1/1 from /home/user/tmp/001.pdf to user:password@127.0.0.1:/tmp
+End upload file 1/1 from /home/user/tmp/001.pdf to user:password@127.0.0.1:/tmp
 }}}
 
 * That's all folks! *
