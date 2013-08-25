@@ -8,8 +8,8 @@
 
 == Naming Convention ==
 
-"["root"]" Linux Administrator user
-\[user\] Linux Non-Administrator user
+  * root: Linux Administrator user
+  * user Linux Non-Administrator user
 
 == Install ==
 
