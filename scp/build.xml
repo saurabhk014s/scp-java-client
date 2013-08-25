@@ -269,6 +269,8 @@
 
 	<target name="dist.sources" depends="dist.binaries" description="create distributable package">
 		<copy file="${jardesc_file}" todir="${tmp_dir}/${project_name}-${project_version}/bin" />
+        
+        <copy file="${project_home}/gpg_sign.sh" todir="${tmp_dir}/${project_name}-${project_version}" />
 		
 		<copy todir="${tmp_dir}/${project_name}-${project_version}/lib">
 			<fileset dir="${project_home}/lib">
@@ -332,10 +334,10 @@
 	</target>
 
 	<target name="gpg_sign" depends="check_gpg_password">
-		<exec executable="echo" os="Linux" vmlauncher="false" spawn="false">
-			<arg line="${gpg_password}|gpg --batch --passphrase-fd 0 -u 5C79EE7A -b -a -s ${file}" />
-		</exec>
-		<exec executable="cmd.exe" os="Windows XP" vmlauncher="false" spawn="false">
+        <exec executable="./gpg_sign.sh" os="Linux" vmlauncher="false" spawn="false" dir="${project_home}">
+                <arg line="${gpg_password} ${file}" />
+        </exec>
+        <exec executable="cmd.exe" os="Windows XP" vmlauncher="false" spawn="false">
 			<arg line="/c echo ${gpg_password}|C:\Programmi\GNU\GnuPG\gpg.exe --batch --passphrase-fd 0 -u 5C79EE7A -b -a -s ${file}" />
 		</exec>
 	</target>
