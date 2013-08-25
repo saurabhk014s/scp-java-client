@@ -81,6 +81,11 @@ Primary key fingerprint: 66CC 4C24 D606 7E65 6E44  B7FE FA32 157C 5C79 EE7A
 chmod 755 scp/scp.sh
 }}}
 
+*Copy the default appender from the installation:*
+{{{
+[user] cp /usr/local/scp/res/scp_config_file.properties /home/rattom/.scp/conf
+}}}
+
 *Test it with a non-root user:*
 {{{
 [user] /usr/local/scp/scp.sh
