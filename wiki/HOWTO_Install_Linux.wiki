@@ -1,5 +1,5 @@
 #labels Featured,Install,HOWTO
-#HOWTO: Install on a Linux System#
+=HOWTO: Install on a Linux System=
 
 == Requirements ==
 
