@@ -82,8 +82,14 @@ Primary key fingerprint: 66CC 4C24 D606 7E65 6E44  B7FE FA32 157C 5C79 EE7A
 
 *Change the GRANT to the unix-shell-script for enabling to execute to everyone:*
 {{{
-[root]
-chmod 755 scp/scp.sh
+[root] chmod 755 scp/scp.sh
+}}}
+
+*Delete files downloaded:*
+{{{
+[root] rm scp_v1.2.bin.tar.gz
+[root] rm scp_v1.2.bin.tar.gz.sha
+[root] rm scp_v1.2.bin.tar.gz.asc
 }}}
 
 *Create the local configuration for the user:*
