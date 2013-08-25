@@ -1,6 +1,11 @@
 #summary Simple HOWTO for installing this utility on a Linux System.
 #labels Featured,Install,HOWTO
 
+= Requirements =
+
+# Linux
+# Java (1.5.x or newer, Sun-Oracle, OpenJDK, or other)
+
 = Install =
 
 *Become root:*
